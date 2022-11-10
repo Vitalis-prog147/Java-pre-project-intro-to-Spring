@@ -43,7 +43,11 @@ public class Car {
 
     @Override
     public String toString() {
-        return "This car is from " + model + " manufactured " + " by " + brand + " in " + color ;
+        return "Car{" +
+                "brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", color='" + color + '\'' +
+                '}';
     }
 
     @Override
