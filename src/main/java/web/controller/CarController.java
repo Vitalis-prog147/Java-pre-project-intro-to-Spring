@@ -12,6 +12,7 @@ import web.service.CarServiceImpl;
 @RequestMapping("/cars")
 public class CarController {
 
+
     private final CarServiceImpl carService;
 
     @Autowired
@@ -19,13 +20,10 @@ public class CarController {
         this.carService = carService;
     }
 
+
     @GetMapping()
-    public String getCarCount(@RequestParam(value = "count", required = false,defaultValue = "5") Integer count, Model model) {
-        if (count < 5) {
-            model.addAttribute("cars",carService.index(count));
-        }else{
-            model.addAttribute("cars",carService.index());
-        }
-        return"car";
+    public String printCars(@RequestParam(value = "count", required = false,defaultValue = "5") Integer count, Model model) {
+        model.addAttribute("cars", carService.index(count));
+        return "car";
     }
 }

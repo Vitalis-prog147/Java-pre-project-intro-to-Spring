@@ -27,6 +27,11 @@ private List<Car> cars;
 
     @Override
     public List<Car> index(int number) {
-        return cars.stream().limit(number).toList();
+        if (number > cars.size() || number == 0) {
+            number = cars.size();
+        }
+        return cars.stream()
+                    .limit(number)
+                    .toList();
     }
 }

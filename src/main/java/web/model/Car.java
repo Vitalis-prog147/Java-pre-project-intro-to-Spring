@@ -1,6 +1,11 @@
 package web.model;
 
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import java.util.Objects;
+import web.service.CarServiceImpl;
 
 public class Car {
     private String brand;
