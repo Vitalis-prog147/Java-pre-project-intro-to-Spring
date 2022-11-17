@@ -43,24 +43,24 @@ public class UsersController {
 
 
 
-    @GetMapping(value = "/{id}/edit")
-    public String edit(@PathVariable("id") int id, Model model) {
+    @GetMapping("/edit")
+    public String edit(Model model, @RequestParam(name = "id") int id) {
         model.addAttribute("user", userService.get(id));
         return "edit";
     }
-    @PostMapping(value = "/users/{id}")
-    public String update(@ModelAttribute("user") User user, @PathVariable("id") int id) {
+    @PostMapping(value = "/users/")
+    public String update(@ModelAttribute("user") User user, @RequestParam(name = "id") int id) {
         userService.edit(id, user);
         return "redirect:/users";
     }
-    @PostMapping(value = "/{id}/delete")
-    public String delete(@PathVariable("id") int id) {
+    @PostMapping(value = "/delete/")
+    public String delete(@RequestParam(name = "id") int id) {
         userService.delete(id);
         return "redirect:/users";
     }
 
     @PostMapping(value = "{/delete")
-    public String isExistById(@PathVariable User user) {
+    public String isExistById(@RequestParam User user) {
         userService.delete(user.getId());
         return "redirect:/users";
     }
