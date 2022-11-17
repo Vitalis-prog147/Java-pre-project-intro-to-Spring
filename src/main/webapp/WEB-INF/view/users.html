@@ -22,7 +22,7 @@
 
             <td>
                 <form th:action="@{/{id}/edit(id=${user.getId()})}">
-                <button>Edit</button>
+                    <button>Edit</button>
                 </form>
             </td>
 
@@ -30,6 +30,7 @@
                 <form th:method="DELETE" th:action="@{/{id}/delete(id=${user.getId()})}">
                     <input type="submit" value="Delete">
                 </form>
+            </td>
             </td>
         </tr>
     </table>

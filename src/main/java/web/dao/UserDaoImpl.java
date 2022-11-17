@@ -25,12 +25,12 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void saveUser(User user) {
+    public void save(User user) {
         entityManager.persist(user);
     }
 
     @Override
-    public User displayUser(int id) {
+    public User get(int id) {
         TypedQuery<User> typedQuery = entityManager.createQuery(
                 "select user from User user where user.id = :id", User.class);
         typedQuery.setParameter("id", id);
@@ -38,8 +38,8 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void editUser(int id, User editUser) {
-        User user = displayUser(id);
+    public void edit(int id, User editUser) {
+        User user = get(id);
         user.setName(editUser.getName());
         user.setSurname(editUser.getSurname());
         user.setEmail(editUser.getEmail());
@@ -47,8 +47,8 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void deleteUser(int id) {
-        User user = displayUser(id);
+    public void delete(int id) {
+        User user = get(id);
         entityManager.remove(user);
     }
 
