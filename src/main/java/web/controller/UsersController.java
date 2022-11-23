@@ -1,5 +1,6 @@
 package web.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -13,6 +14,7 @@ public class UsersController {
 
     private final UserService userService;
 
+    @Autowired
     public UsersController(UserService userService) {
         this.userService = userService;
     }
@@ -48,7 +50,7 @@ public class UsersController {
         model.addAttribute("user", userService.get(id));
         return "edit";
     }
-    @PostMapping(value = "/users/")
+    @PostMapping(value = "/users/") 
     public String update(@ModelAttribute("user") User user, @RequestParam(name = "id") int id) {
         userService.edit(id, user);
         return "redirect:/users";
@@ -58,12 +60,5 @@ public class UsersController {
         userService.delete(id);
         return "redirect:/users";
     }
-
-    @PostMapping(value = "{/delete")
-    public String isExistById(@RequestParam User user) {
-        userService.delete(user.getId());
-        return "redirect:/users";
-    }
-
 
 }
